@@ -1,0 +1,24 @@
+input {
+    redis {
+        port => "{{REDIS_PORT}}"
+        host => "{{REDIS_HOST}}"
+        data_type => "list"
+        key => "nginx_key"
+        type => "nginx_access"
+   }
+}
+
+filter {
+   grok {
+       type => "nginx-access"
+       pattern => "%{IPORHOST:source_ip} - %{USERNAME:remote_user} \[%{HTTPDATE:timestamp}\] %{QS:request} %{INT:status} %{INT:body_bytes_sent} %{QS:http_referer} %{QS:http_user_agent}"
+   }
+}
+
+
+output {
+    elasticsearch {
+        hosts => "{{HOSTS}}"
+        index => "nginx_acc-%{+YYYY.MM.dd}"
+   }
+}

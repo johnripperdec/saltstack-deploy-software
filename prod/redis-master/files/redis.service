@@ -1,0 +1,12 @@
+[Unit]
+Description=Redis on port 6379
+
+[Service]
+Type=forking
+ExecStart=/etc/init.d/redis start
+ExecStop=/etc/init.d/redis stop
+ExecRestart=/etc/init.d/redis restart
+ExecStatus=/etc/init.d/redis status
+ExecReload=/etc/init.d/redis reload
+[Install]
+WantedBy=multi-user.target

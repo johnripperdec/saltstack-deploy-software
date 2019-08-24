@@ -1,0 +1,32 @@
+#!/bin/bash
+# chkconfig:   - 85 15 
+PATH=/usr/local/bin:/sbin:/usr/bin:/bin  
+
+REDISPORT={{REDISPORT}}
+EXEC=/usr/local/bin/redis-sentinel
+
+PID=$(ps -ef|grep redis-sentinel|head -n 1|awk -F ' ' {'print $2'})
+CONF="/usr/local/redis/redis_sentinel.conf"   
+
+case "$1" in  
+    start)  
+                echo "Starting Redis sentinel server..."  
+                $EXEC $CONF  
+        if [ "$?"="0" ]   
+        then  
+              echo "Redis sentinel is running..."  
+        fi  
+        ;;  
+    stop)  
+                echo "Stopping ..."  
+                kill -9 $PID
+                echo "Redis stopped"  
+        ;;  
+   restart|force-reload)  
+        ${0} stop  
+        ${0} start  
+        ;;  
+  *)  
+    echo "Usage: /etc/init.d/redis {start|stop|restart|force-reload}" >&2  
+        exit 1  
+esac  

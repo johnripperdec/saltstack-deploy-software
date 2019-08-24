@@ -1,0 +1,11 @@
+[Unit]
+Description=fdfs_trackerd service
+
+[Service]
+Type=forking
+ExecStart=/etc/init.d/fdfs_trackerd start
+ExecStop=/etc/init.d/fdfs_trackerd stop
+ExecRestart=/etc/init.d/fdfs_trackerd restart
+
+[Install]
+WantedBy=multi-user.target

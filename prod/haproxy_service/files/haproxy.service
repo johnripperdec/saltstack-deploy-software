@@ -1,0 +1,11 @@
+[Unit]
+Description=haproxy service
+
+[Service]
+Type=forking
+ExecStart=/etc/init.d/haproxy start
+ExecStop=/etc/init.d/haproxy stop
+ExecRestart=/etc/init.d/haproxy restart
+
+[Install]
+WantedBy=multi-user.target

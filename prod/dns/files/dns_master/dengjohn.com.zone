@@ -1,0 +1,14 @@
+$ORIGIN .
+$TTL 3600        ; 1 hour
+dengjohn.com       IN SOA op.dengjohn.com. dns.dengjohn.com. (
+							2059		; serial
+							900		; refresh (15 minutes)
+							600		; retry (10 minutes)
+							86400		; expire (1 day)
+							3600		; minimum (1 hour)
+
+)
+		NS  op.dengjohn.com.
+$ORIGIN dengjohn.com.
+shanks    		A     192.168.147.190
+op 			A     192.168.147.160

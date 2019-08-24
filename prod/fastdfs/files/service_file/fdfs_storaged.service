@@ -1,0 +1,11 @@
+[Unit]
+Description=fdfs_storaged service
+
+[Service]
+Type=forking
+ExecStart=/etc/init.d/fdfs_storaged start
+ExecStop=/etc/init.d/fdfs_storaged stop
+ExecRestart=/etc/init.d/fdfs_storaged restart
+
+[Install]
+WantedBy=multi-user.target

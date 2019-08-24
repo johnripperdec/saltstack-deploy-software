@@ -1,0 +1,10 @@
+[Unit]
+Description=tomcat web service
+
+[Service]
+Type=forking
+ExecStart=/home/apache-tomcat/apache-tomcat/bin/startup.sh
+ExecStop=/home/apache-tomcat/apache-tomcat/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target

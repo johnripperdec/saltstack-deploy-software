@@ -1,0 +1,21 @@
+#!/bin/bash
+#owner dengchao
+#email 674591788@qq.com
+#cd /opt/soft
+tar -zxvf jdk-8u45-linux-x64.tar.gz
+mkdir /home/apache-tomcat
+mv jdk1.8.0_45/ /home/apache-tomcat/
+cd /opt/soft
+tar -xf apache-tomcat-8.5.16.tar.gz
+mv apache-tomcat-8.5.16 /home/apache-tomcat/apache-tomcat
+echo "JAVA_HOME=/home/apache-tomcat/jdk1.8.0_45" >>/etc/profile
+echo "TOMCAT_HOME=/home/apache-tomcat/apache-tomcat">>/etc/profile
+echo "CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar">>/etc/profile
+echo "PATH=$TOMCAT_HOME/bin:$JAVA_HOME/bin:$PATH">>/etc/profile
+echo "export JAVA_HOME CLASSPATH PATH TOMCAT_HOME">>/etc/profile
+source /etc/profile
+useradd -u 601 tomcat 
+echo "tomcat"| passwd --stdin tomcat
+chown -R tomcat.tomcat /home/apache-tomcat/apache-tomcat
+chown -R tomcat.tomcat /home/apache-tomcat/jdk1.8.0_45
+#sh /home/apache-tomcat/apache-tomcat/bin/startup.sh

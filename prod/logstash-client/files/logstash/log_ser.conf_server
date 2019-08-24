@@ -1,0 +1,15 @@
+input {
+    redis {
+        port => "{{REDIS_PORT}}"
+        host => "{{REDIS_HOST}}"
+        data_type => "list"
+        key => "logstash-redis"
+        type => "redis-input"
+   }
+}
+output {
+    elasticsearch {
+        hosts => "{{HOSTS}}"
+        index => "logstash-%{+YYYY.MM.dd}"
+   }
+}

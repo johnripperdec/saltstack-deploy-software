@@ -1,0 +1,10 @@
+[Unit]
+Description=keepalived
+
+[Service]
+Type=forking
+ExecStart=/etc/init.d/keepalived start
+ExecStop=/etc/init.d/keepalived stop
+
+[Install]
+WantedBy=multi-user.target

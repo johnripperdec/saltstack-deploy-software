@@ -1,0 +1,18 @@
+include:
+  - rabbitmq-install.rabbitmq-install
+replace-initserver-file:
+  file.managed:
+    - name: /etc/init.d/rabbitmq-server
+    - source: salt://rabbitmq-cluster/files/rabbitmq-server
+    - user: root
+    - group: root
+    - mode: 755
+erlang-cokie-replace:
+  cmd.run:
+    - name: \cp /var/lib/rabbitmq/.erlang.cookie /srv/salt/prod/rabbitmq-cluster/files/ 
+disc-service:
+  service.running:
+    - name: rabbitmq-server
+    - enable: rabbitmq-server
+    - require:
+      - file: replace-initserver-file

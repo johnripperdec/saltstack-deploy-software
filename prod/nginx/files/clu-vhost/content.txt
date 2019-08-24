@@ -1,0 +1,187 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 04 Mar 2017 06:04:15 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 7933
+Connection: keep-alive
+Vary: Accept-Encoding
+Last-Modified: Fri, 03 Mar 2017 03:40:05 GMT
+Vary: Accept-Encoding
+ETag: "58b8e595-1efd"
+Accept-Ranges: bytes
+
+<!-- HTML5文件 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, width=device-width, user-scalable=no">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="wap-font-scale" content="no">
+    <title>夺宝也疯狂</title>
+    <!-- 框架引用css -->
+    <link href="/public/css/jquery-weui.min_43b0fba.css" rel="stylesheet" type="text/css"/>
+    <link href="/public/css/weui.min_4ec93e4.css" rel="stylesheet" type="text/css"/>
+    <!-- 公用样式css -->
+    <link href="/public/css/base_eb1c49e.css" rel="stylesheet" type="text/css"/>
+    <!-- 界面对应css -->
+    <link href="/public/css/app/index_0c92f1c.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 头部样式 -->
+<header class="header">
+    <img src="/public/images/home/logo.png"/>
+    <!-- <a href="../search/index.html"><img src="../images/home/search.png" /></a>-->
+</header>
+<!-- 主体内容 -->
+<div class="main mt44">
+    <!-- 轮播开始 -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="banner_data_content">
+            <script id="banner_data" type="text/html">
+                <% for (var i = 0; i < list.length; i ++) { %>
+                <div class="swiper-slide">
+                    <a href="<%= list[i].link_address %>"><img class="lazy" src="/public/images/home/bunner_lasy.png"
+                                                               dataimg="<%=entityUrl%>/<%= list[i].picture %>"/></a>
+                </div>
+                <% } %>
+            </script>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- 快捷入口操作部分  -->
+    <div class="clearfix" id="entry_data_content">
+        <script id="entry_data" type="text/html">
+            <% for (var i = 0; i < list.length; i++) { %>
+            <a href="<%= list[i].data %>">
+                <i><img src="<%=entityUrl%>/<%= list[i].picture %>"/></i>
+                <br><%= list[i].name %>
+            </a>
+            <% } %>
+        </script>
+    </div>
+    <!-- 中奖提示 -->
+    <div class="tip-div">
+        <ul id="winner_data_content">
+            <script id="winner_data" type="text/html">
+                <% for (var i = 0; i < list.length; i ++) { %>
+                <li>
+                    <i class="tip-right">
+                        <a href="announced/detail.html?issue_id=<%= list[i].issue_id %>">恭喜
+                            <em><%= list[i].nickname %></em><%= list[i].rangeTime %>前获得
+                            <strong><%= list[i].name %></strong></a>
+                    </i>
+                </li>
+                <% } %>
+            </script>
+        </ul>
+    </div>
+    <!-- 专区 区域 开始 -->
+    <div class="i-area" id="subject_data_content">
+        <script id="subject_data" type="text/html">
+            <% for (var i = 0; i < list.length; i ++) { %>
+            <a href="<%= list[i].data %>">
+                <!-- 标题内容 -->
+                <div class="i-area-title"><%= list[i].name %> <p><%= list[i].description %></p>
+                </div>
+                <!-- 图片内容 -->
+                <div class="i-area-img">
+                    <img src="<%=entityUrl%>/<%= list[i].picture %>"/>
+                </div>
+            </a>
+            <% } %>
+        </script>
+    </div>
+    <!-- 专区 区域 结束 -->
+    <!-- tab切换开始  -->
+    <div class="weui_tab mt-5">
+        <div class="weui_navbar">
+            <a href="#tab1" class="weui_navbar_item weui_bar_item_on" id="nav1" data-id="1">人气</a>
+            <a href="#tab2" class="weui_navbar_item" id="nav2" data-id="2">最新</a>
+            <a href="#tab3" class="weui_navbar_item" id="nav3" data-id="3">进度</a>
+            <a href="#tab4" class="weui_navbar_item w-tabs" id="nav4" data-id="4">总需人次
+                <i class="w-ico w-ico-sort2Arrow"></i>
+            </a>
+
+        </div>
+        <div class="weui_tab_bd">
+            <!-- 数据加载 -->
+            <div class="weui_tab_bd_item_active">
+                <ul class="i-goods-list" id="issue_table_data_content">
+                    <script id="issue_table_data" type="text/html">
+                        <% for (var i = 0; i < list.length; i ++) { %>
+                        <li>
+                            <div class="i-goods-div">
+                                <% if (list[i].tag_picture!="") { %>
+                                <div class="option-left-tip"><img src="<%=entityUrl%>/<%= list[i].tag_picture %>"/>
+                                </div>
+                                <% } %>
+                                <a href="detail/index.html?goods_id=<%= list[i].goods_id %>">
+                                    <i class="i-list-img">
+                                        <img class="lazy" src="/public/images/home/lasy.png"
+                                             dataimg="<%=entityUrl%>/<%= list[i].icon %>" alt=""/>
+                                        <br><%= list[i].name %></i>
+                                </a>
+                                <i class="i-fx">
+                                    <div class="i-fx-left">开奖进度
+                                        <em><%= list[i].progress %>%</em>
+                                        <div class="i-bar">
+                                            <div class="i-zbar" style="width:<%= list[i].progress %>%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="i-fx-right">
+                                        <button class="i-fx-btn open-popup-6ldb" data-target="#cart_6ldb_half"
+                                                goodsId="<%= list[i].goods_id %>">立即购买
+                                        </button>
+                                    </div>
+                                </i>
+                            </div>
+                        </li>
+                        <% } %>
+                    </script>
+                </ul>
+                <!-- 内容部分结束 -->
+            </div>
+
+        </div>
+    </div>
+    <!-- tab切换结束  -->
+</div>
+<!-- 回顶部 -->
+<div id="goTopBtn"><img src="/public/images/icon/top.png"></div>
+
+<!-- 底部样式 -->
+<footer class="footer">
+    <a href="index.html#index_home" class="on">
+        <img src="/public/images/app/ired1.png">
+        <p>夺宝</p>
+    </a>
+    <a href="announced/index.html#index_home">
+        <img src="/public/images/app/igrey2.png">
+        <p>最新揭晓</p>
+    </a>
+    <a href="javascript:void(0)" onclick="getUrl(this)" getUrl="user/duobao.html" class="indexGetClass">
+        <img src="/public/images/app/igrey3.png">
+        <p>夺宝记录</p>
+    </a>
+    <a href="javascript:void(0)" onclick="getUrl(this)" getUrl="user/index.html#index_home" class="indexGetClass">
+        <img src="/public/images/app/igrey5.png">
+        <p>我</p>
+    </a>
+</footer>
+
+
+<script type="text/javascript" src="/public/js/jquery/jquery-2.1.4_8764c01.js"></script>
+<!-- 框架对应js -->
+<script type="text/javascript" src="/public/js/jquery/jquery-weui_9eac6f0.js"></script>
+<script type="text/javascript" src="/public/js/jquery/swiper_64059e8.js"></script>
+<!-- 懒加载引入 -->
+<script type="text/javascript" src="/public/js/app/lazyload_448f707.js"></script>
+<!-- 数据模板加载 -->
+<script type="text/javascript" src="/public/js/jquery/template-native_07afd04.js"></script>
+<script type="text/javascript" src="/public/js/one/common_e70c253.js"></script>
+<script type="text/javascript" src="/public/js/one/home_e6296ee.js"></script>
+<script type="text/javascript" src="/public/js/one/pay_a7666a2.js"></script>
+
+</body>
+</html>

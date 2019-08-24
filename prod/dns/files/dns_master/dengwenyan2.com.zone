@@ -1,0 +1,20 @@
+$ORIGIN .
+$TTL 3600        ; 1 hour
+dengwenyan.com       IN SOA op.dengwenyan.com. dns.dengwenyan.com. (
+							2059		; serial
+							900		; refresh (15 minutes)
+							600		; retry (10 minutes)
+							86400		; expire (1 day)
+							3600		; minimum (1 hour)
+
+)
+		NS  op.dengwenyan.com.
+$ORIGIN dengwenyan.com.
+shanks    		A     192.168.147.182
+op 			A     192.168.147.160
+add			A     192.168.147.200
+dengchao		A     192.168.147.200
+dengchao		A     192.168.137.200
+cname		CNAME     add.dengwenyan.com.
+mx		MX 5	192.168.147.200
+mx		MX 10	192.168.148.200

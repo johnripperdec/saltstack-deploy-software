@@ -1,0 +1,28 @@
+view  "view" {
+	zone "dengwenyan.com" {
+	
+	type   master;
+	file "dengwenyan.com.zone";
+	allow-transfer {
+		192.168.147.161;
+	};
+	notify  yes;
+	also-notify {
+		192.168.147.161;
+	};
+	};
+
+zone "168.192.in-addr.arpa" {
+	type  master;
+	file "168.192.zone";
+	allow-transfer {
+		192.168.147.161;
+	
+	};
+	notify yes;
+	also-notify {
+		192.168.147.161;
+	
+	};
+};
+};

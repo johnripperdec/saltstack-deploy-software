@@ -1,0 +1,11 @@
+$TTL 3600        ; 1 hour
+@      IN SOA op.dengwenyan.com. dns.dengwenyan.com. (
+							2049		; serial
+							900		; refresh (15 minutes)
+							600		; retry (10 minutes)
+							86400		; expire (1 day)
+							3600		; minimum (1 hour)
+
+)
+		NS  op.dengwenyan.com.
+180.147			IN    PTR	shanks.dengwenyan.com.

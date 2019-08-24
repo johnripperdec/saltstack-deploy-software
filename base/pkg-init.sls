@@ -1,0 +1,21 @@
+pkg-install:
+  pkg.installed:
+    - names:
+      - gcc
+      - gcc-c++
+      - glibc
+      - autoconf
+      - make
+      - openssl
+      - openssl-devel
+      - wget
+      - openssh-clients
+      - cmake
+      - ncurses
+      - ncurses-devel
+      - rsync
+      - expect
+      - ntpdate
+      - pcre-devel
+      - zlib
+      - zlib-devel

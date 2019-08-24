@@ -1,0 +1,13 @@
+[Unit]  
+Description=jenkins  
+After=network.target  
+   
+[Service]  
+Type=forking  
+ExecStart=/etc/init.d/jenkins start 
+ExecReload=/etc/init.d/jenkins  reload 
+ExecStop=/etc/init.d/jenkins   stop  
+PrivateTmp=true  
+   
+[Install]  
+WantedBy=multi-user.target 
